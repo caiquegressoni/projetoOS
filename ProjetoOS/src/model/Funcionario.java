@@ -1,13 +1,12 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Funcionario {
 
 	private int id;
-	private String nome, nascimento, endereco, especialidate, periodo;
-	private ArrayList<String> competencias;
+	private String nome, endereco, especialidade, competencias, periodo;
 	private double valorHora;
+
+
 
 	public int getId() {
 		return id;
@@ -25,14 +24,6 @@ public class Funcionario {
 		this.nome = nome;
 	}
 
-	public String getNascimento() {
-		return nascimento;
-	}
-
-	public void setNascimento(String nascimento) {
-		this.nascimento = nascimento;
-	}
-
 	public String getEndereco() {
 		return endereco;
 	}
@@ -41,12 +32,20 @@ public class Funcionario {
 		this.endereco = endereco;
 	}
 
-	public String getEspecialidate() {
-		return especialidate;
+	public String getEspecialidade() {
+		return especialidade;
 	}
 
-	public void setEspecialidate(String especialidate) {
-		this.especialidate = especialidate;
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public String getCompetencias() {
+		return competencias;
+	}
+
+	public void setCompetencias(String competencias) {
+		this.competencias = competencias;
 	}
 
 	public String getPeriodo() {
@@ -55,14 +54,6 @@ public class Funcionario {
 
 	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
-	}
-
-	public ArrayList<String> getCompetencias() {
-		return competencias;
-	}
-
-	public void setCompetencias(ArrayList<String> competencias) {
-		this.competencias = competencias;
 	}
 
 	public double getValorHora() {
@@ -96,13 +87,17 @@ public class Funcionario {
 	}
 
 	public String toString() {
-		return "Funcionario [id=" + id + ", nome=" + nome + ", nascimento=" + nascimento + ", endereco=" + endereco
-				+ ", especialidate=" + especialidate + ", periodo=" + periodo + ", competencias=" + competencias
-				+ ", valorHora=" + valorHora + "]";
+		return "Funcionario [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", especialidate="
+				+ especialidade + ", competencias=" + competencias + ", periodo=" + periodo + ", valorHora=" + valorHora
+				+ "]";
 	}
 
 	public String toCSV() {
-		return id + ";" + nome + ";" + nascimento + ";" + endereco + ";" + especialidate + ";" + periodo + ";"
-				+ competencias + ";" + valorHora + ";";
+		return id + ";" + nome + ";" + endereco + ";" + especialidade + ";" + competencias + ";" + periodo + ";"
+				+ valorHora + "\r\n";
+	}
+
+	public String[] getStringVetor() {
+		return new String[] {""+ id + "", nome, endereco, especialidade, competencias, periodo, valorHora + "" };
 	}
 }

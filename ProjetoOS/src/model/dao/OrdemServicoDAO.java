@@ -8,17 +8,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import model.Funcionario;
+import model.OrdemServico;
 
-public class FuncionarioDAO {
+public class OrdemServicoDAO {
+	
 
-	private Funcionario funcionario;
+	private OrdemServico ordemservico;
 	private BufferedReader br;
 	private BufferedWriter bw;
-	private String arquivo = ".\\bd\\funcionarios.csv";
+	private String arquivo = ".\\bd\\ordemservico.csv";
 	private String campos[];
 
-	public boolean save(ArrayList<Funcionario> funcionarios) {
+	public boolean save(ArrayList<OrdemServico> ordemservicos) {
 
 		boolean retorno = false;
 
@@ -26,9 +27,9 @@ public class FuncionarioDAO {
 
 			bw = new BufferedWriter(new FileWriter(arquivo, false));
 
-			for (Funcionario f : funcionarios) {
+			for (OrdemServico os: ordemservicos) {
 
-				bw.write(f.toCSV());
+				bw.write(os.toCSV());
 
 			}
 
@@ -42,9 +43,9 @@ public class FuncionarioDAO {
 		return retorno;
 	}
 
-	public ArrayList<Funcionario> open() {
+	public ArrayList<OrdemServico> open() {
 
-		ArrayList<Funcionario> funcionarios = new ArrayList<>();
+		ArrayList<OrdemServico> ordemservicos = new ArrayList<>();
 
 		try {
 
@@ -56,17 +57,13 @@ public class FuncionarioDAO {
 
 				campos = linha.split(";");
 
-				funcionario = new Funcionario();
-				
-				funcionario.setId(Integer.parseInt(campos[0]));
-				funcionario.setNome(campos[1]);
-				funcionario.setEndereco(campos[2]);
-				funcionario.setEspecialidade(campos[3]);
-				funcionario.setCompetencias(campos[4]);
-				funcionario.setPeriodo(campos[5]);
-				funcionario.setValorHora(Double.parseDouble(campos[6]));
-			
-				funcionarios.add(funcionario);
+				ordemservico = new OrdemServico();
+				ordemservico.setId(Integer.parseInt(campos[0]));
+				ordemservico.setDataAgendamento(campos[1]);
+				ordemservico.setDataExecucao(campos[2]);
+				ordemservico.setEndereco(campos[3]); 
+				ordemservico.setTotalHora(Integer.parseInt(campos[4])); 
+				ordemservicos.add(ordemservico);
 				linha = br.readLine();
 			}
 			br.close();
@@ -80,6 +77,6 @@ public class FuncionarioDAO {
 			System.out.println(e);
 
 		}
-		return funcionarios;
+		return ordemservicos;
 	}
 }

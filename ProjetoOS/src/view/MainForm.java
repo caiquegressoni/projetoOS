@@ -41,14 +41,19 @@ public class MainForm extends JFrame implements ActionListener {
 		menu.add(itemSair);
 		
 		itemFuncionario.addActionListener(this);
+		itemOrdemServico.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == itemFuncionario) {
-			FuncionarioForm  ff= new FuncionarioForm();
+			FuncionarioForm  ff = new FuncionarioForm();
 			ff.setModal(true);
 			ff.setVisible(true);
+		}else if(e.getSource() == itemOrdemServico) {
+			OrdemForm of = new OrdemForm();
+			of.setVisible(true);
+			of.setModal(true);
 		}
 	}
 

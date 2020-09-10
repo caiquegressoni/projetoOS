@@ -81,4 +81,20 @@ public class OrdemServico {
 		return "OrdemServico [id=" + id + ", dataAgendamento=" + dataAgendamento + ", dataExecucao=" + dataExecucao
 				+ ", endereco=" + endereco + ", totalHora=" + totalHora + ", funcionario=" + funcionario + "]";
 	}
+
+	public String toCSV() {
+		return id + ";" + dataAgendamento + ";" + dataExecucao + ";" + endereco + ";" + totalHora + ";" + funcionario
+				+ ";";
+	}
+
+	public String[] getStringVetor() {
+		return new String[] { id + "", dataAgendamento + "", dataExecucao + "", endereco + "", totalHora + "",
+				funcionario + "" };
+		/*
+		 * } public double totalHorasPeriodo() { return this.totalHora; } public double
+		 * tatalGanhoFuncionario(){ return
+		 * this.totalHorasPeriodo()*this.funcionario.getValorHora(); }
+		 */
+
+	}
 }
